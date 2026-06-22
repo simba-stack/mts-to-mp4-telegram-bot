@@ -126,14 +126,15 @@ async def convert_to_mp4(src: Path, dst: Path) -> tuple[bool, str]:
 
 async def cmd_start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     await update.message.reply_text(
-        "привет мацоня наташечка любимая девочка женушка женулька кавота милиньки\n"
+        "💖 привет мацоня наташечка любимая девочка женушка женулька кавота "
+        "милиньки ❤️\n"
         "я буду делать для тебе видева в фармате мп4 и меня написали пока ты "
-        "спаалаааааааа\n\n"
+        "спаалаааааааа 💕😴\n\n"
         "Просто пришли мне файл .mts (также поддерживаются "
-        ".m2ts, .ts, .avi, .mov) — и я верну тебе .mp4 (H.264 + AAC).\n"
+        ".m2ts, .ts, .avi, .mov) — и я верну тебе .mp4 (H.264 + AAC). 🎬💝\n"
         f"Максимальный размер файла: {MAX_FILE_SIZE // (1024 * 1024)} МБ.\n\n"
         "если што-то нужно будет добавить ты просто скажи кое-каму и он все "
-        "сделает потому што ты его госпожа"
+        "сделает потому што ты его госпожа 👑❤️💋"
     )
 
 
@@ -180,7 +181,7 @@ async def handle_file(update: Update, context: ContextTypes.DEFAULT_TYPE) -> Non
         )
         return
 
-    await message.reply_text("✅ Файл принят.")
+    await message.reply_text("✅ Файл принят. ❤️")
 
     # Уникальная рабочая папка для этой задачи
     job_id = uuid.uuid4().hex
@@ -203,7 +204,7 @@ async def handle_file(update: Update, context: ContextTypes.DEFAULT_TYPE) -> Non
             return
 
         # 4. Конвертация (с ограничением параллелизма)
-        await message.reply_text("⏳ Идёт конвертация…")
+        await message.reply_text("⏳ Идёт конвертация… 💕")
         await context.bot.send_chat_action(
             chat_id=message.chat_id, action=ChatAction.UPLOAD_VIDEO
         )
@@ -216,7 +217,7 @@ async def handle_file(update: Update, context: ContextTypes.DEFAULT_TYPE) -> Non
             return
 
         # 5. Отправка результата
-        await message.reply_text("📤 Готово, отправляю файл…")
+        await message.reply_text("📤 Готово, отправляю файл… 💝")
         out_name = Path(file_name).stem + ".mp4"
         with open(dst_path, "rb") as f:
             await message.reply_document(document=f, filename=out_name)
